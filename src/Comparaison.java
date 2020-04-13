@@ -8,8 +8,8 @@ public class Comparaison {
      * @param phrase1 = phrase générée
      * @param phrase2 = phrase cible
      */
-    public Comparaison(String phrase1, String phrase2) {
-        this.phrase1 = phrase1;
-        this.phrase2 = phrase2;
+    public Comparaison(Phrase phrase1, Phrase phrase2) {
+        this.phrase1 = phrase1.getPhrase();
+        this.phrase2 = phrase2.getPhrase();
     }
 }

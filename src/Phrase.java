@@ -12,7 +12,7 @@ public class Phrase {
         this.phrase = phrase;
     }
 
-    private String getPhrase(){
+    public String getPhrase(){
         return this.phrase;
     }
 
