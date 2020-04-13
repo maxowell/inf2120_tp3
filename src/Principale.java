@@ -16,6 +16,11 @@ public class Principale {
         String phrase2 = in.nextLine();
 
         in.close();
+
+        // Créer les objets Phrase
+        Phrase generee = new Phrase(phrase1);
+        Phrase cible = new Phrase(phrase2);
+
         new Comparaison(phrase1,phrase2);
     }
 }
