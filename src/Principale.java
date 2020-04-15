@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Principale {
@@ -11,16 +12,64 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String phrase1 = in.nextLine();
+        String textePhrase1 = in.nextLine();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String phrase2 = in.nextLine();
+        String textePhrase2 = in.nextLine();
 
         in.close();
 
         // Créer les objets Phrase
-        Phrase generee = new Phrase(phrase1);
-        Phrase cible = new Phrase(phrase2);
+        Phrase phrase1 = new Phrase(textePhrase1);
+        Phrase phrase2 = new Phrase(textePhrase2);
 
-        new Comparaison(phrase1,phrase2);
+        ArrayList<String[]> phrase = phrase1.getNgramme1();
+        ArrayList<String[]> ngramme2 = phrase1.getNgramme2();
+        ArrayList<String[]> ngramme3 = phrase1.getNgramme3();
+        ArrayList<String[]> ngramme4 = phrase1.getNgramme4();
+
+        for(int i = 0; i < phrase.size(); i++){
+            String[] el = phrase.get( i );
+            for(int j = 0; j < el.length; j++){
+                System.out.print(el[0] + ", ");
+            }
+        }
+
+        System.out.println(" ");
+
+        for(int i = 0; i < ngramme2.size(); i++){
+            String[] el = ngramme2.get( i );
+
+            for(int j = 0; j < el.length; j++){
+                System.out.print(el[j] + " ");
+            }
+            System.out.println(",");
+        }
+
+
+        System.out.println(" ");
+
+        for(int i = 0; i < ngramme3.size(); i++){
+            String[] el = ngramme3.get( i );
+
+            for(int j = 0; j < el.length; j++){
+                System.out.print(el[j] + " ");
+            }
+            System.out.println(",");
+        }
+
+        System.out.println(" ");
+
+        for(int i = 0; i < ngramme4.size(); i++){
+            String[] el = ngramme4.get( i );
+
+            for(int j = 0; j < el.length; j++){
+                System.out.print(el[j] + " ");
+            }
+            System.out.println(",");
+        }
+
+
+
+        //new Comparaison(phrase1,phrase2);
     }
 }
