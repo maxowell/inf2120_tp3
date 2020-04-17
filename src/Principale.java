@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,9 +14,11 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String textePhrase1 = in.nextLine();
+        String textePhrase1 = "Mon nom est Maxime";
+        System.out.println();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String textePhrase2 = in.nextLine();
+        String textePhrase2 = "et3je'suis/un@garcon.";
+        System.out.println();
 
         in.close();
 
@@ -22,54 +26,8 @@ public class Principale {
         Phrase phrase1 = new Phrase(textePhrase1);
         Phrase phrase2 = new Phrase(textePhrase2);
 
-        ArrayList<String[]> phrase = phrase1.getNgramme1();
-        ArrayList<String[]> ngramme2 = phrase1.getNgramme2();
-        ArrayList<String[]> ngramme3 = phrase1.getNgramme3();
-        ArrayList<String[]> ngramme4 = phrase1.getNgramme4();
-
-        for(int i = 0; i < phrase.size(); i++){
-            String[] el = phrase.get( i );
-            for(int j = 0; j < el.length; j++){
-                System.out.print(el[0] + ", ");
-            }
-        }
-
-        System.out.println(" ");
-
-        for(int i = 0; i < ngramme2.size(); i++){
-            String[] el = ngramme2.get( i );
-
-            for(int j = 0; j < el.length; j++){
-                System.out.print(el[j] + " ");
-            }
-            System.out.println(",");
-        }
-
-
-        System.out.println(" ");
-
-        for(int i = 0; i < ngramme3.size(); i++){
-            String[] el = ngramme3.get( i );
-
-            for(int j = 0; j < el.length; j++){
-                System.out.print(el[j] + " ");
-            }
-            System.out.println(",");
-        }
-
-        System.out.println(" ");
-
-        for(int i = 0; i < ngramme4.size(); i++){
-            String[] el = ngramme4.get( i );
-
-            for(int j = 0; j < el.length; j++){
-                System.out.print(el[j] + " ");
-            }
-            System.out.println(",");
-        }
-
-
-
-        //new Comparaison(phrase1,phrase2);
+        // Imprimer les n-grammes de chaque phrase
+        Phrase.print(phrase1,1);
+        Phrase.print(phrase2,2);
     }
 }
