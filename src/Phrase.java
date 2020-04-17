@@ -14,10 +14,10 @@ public class Phrase {
      */
     public Phrase( String phrase ){
         this.phrase = phrase;
-        this.ngramme1 = obtenirNGramme(1);
-        this.ngramme2 = obtenirNGramme(2);
-        this.ngramme3 = obtenirNGramme(3);
-        this.ngramme4 = obtenirNGramme(4);
+        this.ngramme1 = getNGramme(1);
+        this.ngramme2 = getNGramme(2);
+        this.ngramme3 = getNGramme(3);
+        this.ngramme4 = getNGramme(4);
     }
 
     public String getPhrase(){
@@ -28,7 +28,7 @@ public class Phrase {
         return this.phrase.split("\\P{Alpha}+");
     }
 
-    public ArrayList<String[]> obtenirNGramme(int n) {
+    public ArrayList<String[]> getNGramme(int n) {
         String[] phrase = decomposerPhrase();
         ArrayList<String[]> nGramme = new ArrayList<>();
 

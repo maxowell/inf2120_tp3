@@ -14,10 +14,10 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String textePhrase1 = in.nextLine();
+        String textePhrase1 = "Lors de la construction d'un tableau.";
         System.out.println();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String textePhrase2 = in.nextLine();
+        String textePhrase2 = "Lors de la construction d'un logiciel contenant un tableau.";
         System.out.println();
 
         in.close();
@@ -29,5 +29,12 @@ public class Principale {
         // Imprimer les n-grammes de chaque phrase
         Phrase.print(phrase1,1);
         Phrase.print(phrase2,2);
+
+        Comparaison comparaison = new Comparaison(phrase1, phrase2);
+
+        System.out.println(Constantes.C1 + comparaison.c1 +
+                         Constantes.C2 + comparaison.c2 +
+                         Constantes.C3 + comparaison.c3 +
+                         Constantes.C4 + comparaison.c4);
     }
 }
