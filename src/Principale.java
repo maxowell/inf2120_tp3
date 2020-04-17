@@ -14,10 +14,10 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String textePhrase1 = "Mon nom est Maxime";
+        String textePhrase1 = in.nextLine();
         System.out.println();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String textePhrase2 = "et3je'suis/un@garcon.";
+        String textePhrase2 = in.nextLine();
         System.out.println();
 
         in.close();
