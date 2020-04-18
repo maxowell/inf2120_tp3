@@ -1,3 +1,10 @@
+/**
+ * Logiciel qui compare la similarité de deux phrases.
+ *
+ * @author Maxime Ouellet
+ * @author Mathieu Des Lauriers
+ * @version 1.0.0
+ */
 import java.util.ArrayList;
 
 public class Phrase {
@@ -14,21 +21,26 @@ public class Phrase {
      */
     public Phrase( String phrase ){
         this.phrase = phrase;
-        this.ngramme1 = getNGramme(1);
-        this.ngramme2 = getNGramme(2);
-        this.ngramme3 = getNGramme(3);
-        this.ngramme4 = getNGramme(4);
+        this.ngramme1 = setNGramme(1);
+        this.ngramme2 = setNGramme(2);
+        this.ngramme3 = setNGramme(3);
+        this.ngramme4 = setNGramme(4);
     }
 
-    public String getPhrase(){
-        return this.phrase;
-    }
-
+    /**
+     * Décompose la phrase de l'objet Phrase en tableau de mots.
+     * @return String[] = tableau de mots représentant la phrase.
+     */
     private String[] decomposerPhrase(){
         return this.phrase.split("\\P{Alpha}+");
     }
 
-    public ArrayList<String[]> getNGramme(int n) {
+    /**
+     * Construit et initialise les différents Arraylist<String[]> grammes de l'objet Phrase.
+     * @param n = numéro des grammes que nous voulons construire et initialiser.
+     * @return phrase = Arraylist<String>, liste de tableau de mots.
+     */
+    public ArrayList<String[]> setNGramme(int n) {
         String[] phrase = decomposerPhrase();
         ArrayList<String[]> nGramme = new ArrayList<>();
 
@@ -53,7 +65,7 @@ public class Phrase {
     public static void print(Phrase phrase, int p) {
         for (int i = 1; i < 5; i++) {
             System.out.print("\n" + i + Constantes.MIDDLE + p + Constantes.FINAL);
-            printNGramme(phrase.getNgramme(i));
+            printNGramme(phrase.getNGramme(i));
         }
     }
 
@@ -63,7 +75,7 @@ public class Phrase {
      * @param n = numéro du n-gramme
      * @return gramme 1, 2, 3 ou 4 en fonction de ce qui est demandé.
      */
-    public ArrayList<String[]> getNgramme(int n) {
+    public ArrayList<String[]> getNGramme(int n) {
         ArrayList<String []> gramme;
         if (n == 1) {
             gramme = ngramme1;

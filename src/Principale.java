@@ -1,6 +1,10 @@
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
-import java.util.ArrayList;
+/**
+ * Logiciel qui compare la similarité de deux phrases.
+ *
+ * @author Maxime Ouellet
+ * @author Mathieu Des Lauriers
+ * @version 1.0.0
+ */
 import java.util.Scanner;
 
 public class Principale {
@@ -14,10 +18,10 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String textePhrase1 = "Lors de la construction d'un tableau.";
+        String textePhrase1 = in.nextLine();
         System.out.println();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String textePhrase2 = "Lors de la construction d'un logiciel contenant un tableau.";
+        String textePhrase2 = in.nextLine();
         System.out.println();
 
         in.close();
@@ -33,8 +37,23 @@ public class Principale {
         Comparaison comparaison = new Comparaison(phrase1, phrase2);
 
         System.out.println(Constantes.C1 + comparaison.c1 +
-                         Constantes.C2 + comparaison.c2 +
-                         Constantes.C3 + comparaison.c3 +
-                         Constantes.C4 + comparaison.c4);
+                Constantes.C2 + comparaison.c2 +
+                Constantes.C3 + comparaison.c3 +
+                Constantes.C4 + comparaison.c4 + ".");
+
+        System.out.println(Constantes.R1 + comparaison.r1 +
+                Constantes.R2 + comparaison.r2 +
+                Constantes.R3 + comparaison.r3 +
+                Constantes.R4 + comparaison.r4 + ".");
+
+        System.out.println(Constantes.Q1 + comparaison.q1 +
+                Constantes.Q2 + comparaison.q2 +
+                Constantes.Q3 + comparaison.q3 +
+                Constantes.Q4 + comparaison.q4 + ".");
+
+        System.out.println(Constantes.F1 + comparaison.f1 +
+                Constantes.F2 + comparaison.f2 +
+                Constantes.F3 + comparaison.f3 +
+                Constantes.F4 + comparaison.f4 + ".");
     }
 }
