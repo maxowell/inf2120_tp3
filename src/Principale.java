@@ -18,10 +18,10 @@ public class Principale {
         Scanner in = new Scanner(System.in);
 
         System.out.print(Constantes.DEMANDE_GENEREE);
-        String textePhrase1 = in.nextLine();
+        String textePhrase1 = "lors";
         System.out.println();
         System.out.print(Constantes.DEMANDE_CIBLE);
-        String textePhrase2 = in.nextLine();
+        String textePhrase2 = "lorsque";
         System.out.println();
 
         in.close();

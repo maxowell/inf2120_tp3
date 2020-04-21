@@ -57,11 +57,20 @@ public class Comparaison {
     public void calcSetC() {
         for (int n = 1; n < 5; n++) {
             int c = 0;
-            for (int i = 0; i < generee.setNGramme(n).size(); i++) {
+            for (int i = 0; i < generee.getNGramme(n).size(); i++) {
                 for (int j = 0; j < cible.getNGramme(n).size(); j++) {
-                    if (!toAvoid.contains(generee.getNGramme(n).get(i)) &&
-                            caseInsensitiveComparison(generee.getNGramme(n).get(i), cible.getNGramme(n).get(j))) {
-                        c++;
+                    if (generee.getNGramme(n).size() > cible.getNGramme(n).size()) {
+                        if (!toAvoid.contains(cible.getNGramme(n).get(j)) &&
+                                caseInsensitiveComparison(generee.getNGramme(n).get(i), cible.getNGramme(n).get(j))) {
+                            toAvoid.add(cible.getNGramme(n).get(j));
+                            c++;
+                        }
+                    }else {
+                        if (!toAvoid.contains(generee.getNGramme(n).get(i)) &&
+                                caseInsensitiveComparison(generee.getNGramme(n).get(i), cible.getNGramme(n).get(j))) {
+                            toAvoid.add(generee.getNGramme(n).get(i));
+                            c++;
+                        }
                     }
                 }
             }
@@ -106,37 +115,87 @@ public class Comparaison {
         }else {
             v = false;
         }
-        if (v) toAvoid.add(g);
         return v;
     }
 
     /**
      * Calcul et initalise la valeur des différents rappels.
+     * S'il y a division par zéro, initialise à 0.
      */
     public void calcR() {
-        this.r1 = Double.valueOf(this.c1) / cible.getNGramme(1).size();
-        this.r2 = Double.valueOf(this.c2) / cible.getNGramme(2).size();
-        this.r3 = Double.valueOf(this.c3) / cible.getNGramme(3).size();
-        this.r4 = Double.valueOf(this.c4) / cible.getNGramme(4).size();
+        if (cible.getNGramme(1).size() == 0) {
+            this.r1 = 0;
+        }else {
+            this.r1 = Double.valueOf(this.c1) / cible.getNGramme(1).size();
+        }
+        if (cible.getNGramme(2).size() == 0) {
+            this.r2 = 0;
+        }else {
+            this.r2 = Double.valueOf(this.c2) / cible.getNGramme(2).size();
+        }
+        if (cible.getNGramme(3).size() == 0) {
+            this.r3 = 0;
+        }else {
+            this.r3 = Double.valueOf(this.c3) / cible.getNGramme(3).size();
+        }
+        if (cible.getNGramme(4).size() == 0) {
+            this.r4 = 0;
+        }else {
+            this.r4 = Double.valueOf(this.c4) / cible.getNGramme(4).size();
+        }
     }
 
     /**
      * Calcul et initialise la valeur des différentes précisions.
+     * S'il y a division par zéro, initialise à 0.
      */
     public void calcQ() {
-        this.q1 = Double.valueOf(this.c1) / generee.getNGramme(1).size();
-        this.q2 = Double.valueOf(this.c2) / generee.getNGramme(2).size();
-        this.q3 = Double.valueOf(this.c3) / generee.getNGramme(3).size();
-        this.q4 = Double.valueOf(this.c4) / generee.getNGramme(4).size();
+        if (generee.getNGramme(1).size() == 0) {
+            this.q1 = 0;
+        }else {
+            this.q1 = Double.valueOf(this.c1) / generee.getNGramme(1).size();
+        }
+        if (generee.getNGramme(2).size() == 0) {
+            this.q2 = 0;
+        }else {
+            this.q2 = Double.valueOf(this.c2) / generee.getNGramme(2).size();
+        }
+        if (generee.getNGramme(3).size() == 0) {
+            this.q3 = 0;
+        }else {
+            this.q3 = Double.valueOf(this.c3) / generee.getNGramme(3).size();
+        }
+        if (generee.getNGramme(4).size() == 0) {
+            this.q4 = 0;
+        }else {
+            this.q4 = Double.valueOf(this.c4) / generee.getNGramme(4).size();
+        }
     }
 
     /**
      * Calcul et initialise la valeur des différentes f-mesures.
+     * S'il y a division par zéro, initialise à 0.
      */
     public void calcF() {
-        this.f1 = (2 * r1 * q1) / (r1 + q1);
-        this.f2 = (2 * r2 * q2) / (r2 + q2);
-        this.f3 = (2 * r3 * q3) / (r3 + q3);
-        this.f4 = (2 * r4 * q4) / (r4 + q4);
+        if (r1 + q1 == 0) {
+            this.f1 = 0;
+        }else {
+            this.f1 = (2 * r1 * q1) / (r1 + q1);
+        }
+        if (r2 + q2 == 0) {
+            this.f2 = 0;
+        }else {
+            this.f2 = (2 * r2 * q2) / (r2 + q2);
+        }
+        if (r3 + q3 == 0) {
+            this.f3 = 0;
+        }else {
+            this.f3 = (2 * r3 * q3) / (r3 + q3);
+        }
+        if (r4 + q4 == 0) {
+            this.f4 = 0;
+        }else {
+            this.f4 = (2 * r4 * q4) / (r4 + q4);
+        }
     }
 }
